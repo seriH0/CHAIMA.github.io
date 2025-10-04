@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="author" content="Chaima">
     <title>My Artistic Self</title>
+    <link rel="stylesheet" href="my_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             margin: 0;
@@ -25,14 +28,10 @@
             text-align: center;
             margin-bottom: 20px;
         }
+
         header h1 {
             font-size: 2.2rem;
             margin: 0;
-        }
-        header a {
-            color: #ffeb3b;
-            text-decoration: none;
-            font-weight: bold;
         }
 
         .keyword {
@@ -63,11 +62,19 @@
         }
     </style>
 </head>
+
 <body>
-    <div class="overlay">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my_vacation.html">My Dream Vacation</a></li>
+            <li><a href="my_artistic_self.html" class="active">My Artistic Self</a></li>
+        </ul>
+    </nav>
+
+    <div class="overlay body_wrapper">
         <header>
             <h1>My Artistic Self</h1>
-            <a href="index.html">← Back to Home</a>
         </header>
 
         <main>
@@ -81,14 +88,18 @@
 
             <section class="description">
                 <p>
-                    I chose Van Gogh "Starry night" art as my background because his bold colors and brushstrokes 
+                    I chose Van Gogh's "Starry Night" art as my background because his bold colors and brushstrokes 
                     reflect a creative and emotional connection to the painting.  
-                    My five keywords describe the way I see myself: creative and artisticin different aspects, 
-                    adventurous in exploring new ideas, thoughtful in looking for details , 
-                    curious to learn things.
+                    My five keywords describe the way I see myself: creative and artistic in different aspects, 
+                    adventurous in exploring new ideas, thoughtful in looking for details, 
+                    and curious to learn things.
                 </p>
             </section>
         </main>
     </div>
+
+    <footer>
+        This website is made for CS203 labs!
+    </footer>
 </body>
 </html>
