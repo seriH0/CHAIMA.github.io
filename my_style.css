@@ -1,4 +1,4 @@
-/* -------- Global Styles -------- */
+
 body {
   font-family: 'Georgia', serif;
   margin: 0;
@@ -9,11 +9,10 @@ body {
 }
 
 .body_wrapper {
-  flex: 1; /* Ensures footer stays at bottom */
+  flex: 1; 
   padding: 20px;
 }
 
-/* -------- Links -------- */
 a:link {
   color: #8b4de8;
   text-decoration: none;
@@ -28,9 +27,8 @@ a:hover {
   text-decoration: underline;
 }
 
-/* -------- Navigation Menu -------- */
 nav {
-  background-color: #cdb7f0; /* light lavender background */
+  background-color: #cdb7f0; 
   padding: 10px 0;
   text-align: center;
 }
