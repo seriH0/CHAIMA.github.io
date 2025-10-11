@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chaima">
+    <title>Calculators</title>
+    <link rel="stylesheet" href="my_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="2-calculators_utils.js"></script>
+    <script src="2-calculator.js"></script>
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my_vacation.html">My Dream Vacation</a></li>
+            <li><a href="my_artistic_self.html">My Artistic Self</a></li>
+            <li><a href="marketplace.html">Marketplace</a></li>
+            <li><a href="calculators.html" class="active">Calculators</a></li>
+        </ul>
+    </nav>
+
+    <div class="body_wrapper">
+        <h1>Some calculators!</h1>
+
+        <!-- Age in Days -->
+        <h2>How old are you in terms of days?</h2>
+        <input type="date" id="DOB">
+        <button onclick="calculate_age_in_days()">Submit</button>
+        <p>The answer is: <span id="p_answer_days"></span></p>
+        <hr>
+
+        <!-- Circle Area -->
+        <h2>The radius and area of the biggest circle fitting in your screen</h2>
+        <button onclick="calculate_circle_area()">Submit</button>
+        <p>The answer is: <span id="p_answer_circle"></span></p>
+        <hr>
+
+        <!-- Palindrome -->
+        <h2>Palindrome checker</h2>
+        <input type="text" id="possible_palindrome">
+        <button onclick="check_palindrome()">Submit</button>
+        <p>The answer is: <span id="p_answer_palindrome"></span></p>
+        <hr>
+
+        <!-- Fibonacci -->
+        <h2>Fibonacci</h2>
+        <input type="number" id="fibo_length">
+        <button onclick="calculate_fibonacci()">Submit</button>
+        <p>The answer is: <span id="p_answer_fibo"></span></p>
+        <hr>
+
+        <!-- Cart Example -->
+        <h2>Cart Example</h2>
+        <button onclick="add_example_items()">Add Example Items to Cart</button>
+        <p>Check the alert to see cart totals.</p>
+    </div>
+
+    <footer>
+        This website is made for CS203 labs!
+    </footer>
+</body>
+</html>
