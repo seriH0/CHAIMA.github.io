@@ -1,0 +1,89 @@
+body {
+  font-family: 'Georgia', serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.body_wrapper {
+  flex: 1; 
+  padding: 20px;
+}
+
+a:link {
+  color: #8b4de8;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #5a2f91;
+}
+
+a:hover {
+  color: #ff9c00;
+  text-decoration: underline;
+}
+
+nav {
+  background-color: #cdb7f0; 
+  padding: 10px 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline-block;
+  margin: 0 15px;
+}
+
+nav ul li a {
+  font-weight: bold;
+  color: #f3e9ff; 
+  background-color: #9c7bd3;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #b393e6; 
+  color: #ffffff; 
+}
+
+nav ul li a.active {
+  background-color: #e8c5e8; 
+  color: #ffffff; 
+  border: 2px solid #cdb7f0;
+}
+
+footer {
+  background-color: #9c7bd3; 
+  color: #f3e9ff; 
+  text-align: center;
+  padding: 15px;
+  height: 50px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b49ad7;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #9a7dc5;
+}

@@ -4,23 +4,41 @@
     <meta charset="UTF-8">
     <meta name="author" content="Chaima">
     <title>An Ideal Vacation</title>
+    <link rel="stylesheet" href="my_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
-    <p>An ideal vacation would be visiting <strong>Japan</strong> or <strong>South Korea</strong> &amp; since their environment over there is very different to here.</p>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="my_vacation.html" class="active">My Dream Vacation</a></li>
+            <li><a href="my_artistic_self.html">My Artistic Self</a></li>
+        </ul>
+    </nav>
 
-    <!-- Added border + rounded corners + shadow -->
-    <img src="images/tokyo.jpeg" alt="Japan" width="350"
-         style="border:4px solid #9d92e5; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.2); margin:10px;">
+    <div class="body_wrapper">
+        <p>
+            An ideal vacation would be visiting <strong>Japan</strong> or <strong>South Korea</strong> &amp; 
+            since their environment over there is very different from here.
+        </p>
 
-    <img src="images/seoul.webp" alt="Korea" width="392"
-         style="border:4px solid #9d92e5; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.2); margin:10px;">
-    <h2>A few things I would never miss:</h2>
-    <ul>
-        <li>Visit Tokyo and Seoul</li>
-        <li>Visit traditional temples</li>
-        <li>Obviously eat anything and everything</li>
-    </ul>
+        <img src="images/tokyo.jpeg" alt="Japan" 
+             style="width:45%; max-width:350px; border:4px solid #9d92e5; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.2); margin:10px;">
 
-    <p><a href="index.html">Home</a></p>
+        <img src="images/seoul.webp" alt="Korea" 
+             style="width:45%; max-width:392px; border:4px solid #9d92e5; border-radius:15px; box-shadow:0 4px 8px rgba(0,0,0,0.2); margin:10px;">
+
+        <h2>A few things I would never miss:</h2>
+        <ul>
+            <li>Visit Tokyo and Seoul</li>
+            <li>Visit traditional temples</li>
+            <li>Obviously eat anything and everything</li>
+        </ul>
+    </div>
+
+    <footer>
+        This website is made for CS203 labs!
+    </footer>
 </body>
 </html>
