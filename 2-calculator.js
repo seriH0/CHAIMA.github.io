@@ -1,119 +1,58 @@
-function write_answer_days(text_msg){
-    let my_p = document.getElementById("p_answer_days");
-    my_p.innerHTML = text_msg;
-}
-
-function get_dob(){
-    return document.getElementById("DOB").value;
-}
-
-function calculate_age_in_days() {
-    let dob = get_dob();
+// ---------------- age ----------------
+function compute_days() {
+    const dob = document.getElementById("DOB").value;
+    const container = document.getElementById("output_days");
     if (!dob) {
-        write_answer_days("Please enter your date of birth.");
+        container.innerHTML = "<p>Please enter your date of birth.</p>";
         return;
     }
-    let birthDate = new Date(dob);
-    let today = new Date();
-    let diffTime = today - birthDate;
-    let diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-    write_answer_days(`You are ${diffDays} days old.`);
+    const birthDate = new Date(dob);
+    const today = new Date();
+    const diffDays = Math.floor((today - birthDate) / (1000 * 60 * 60 * 24));
+    container.innerHTML = `<p>You are ${diffDays} day(s) old.</p>`;
 }
 
-function write_answer_circle(text_msg){
-    let my_p = document.getElementById("p_answer_circle");
-    my_p.innerHTML = text_msg;
+// ---------------- circle ----------------
+function compute_circle() {
+    const container = document.getElementById("output_circle");
+    const screen = window.screen;
+    const radius = Math.min(screen.width, screen.height) / 2;
+    const area = Math.PI * radius * radius;
+    container.innerHTML = `<p>Radius: ${radius.toFixed(2)} px</p>
+                           <p>Area: ${area.toFixed(2)} px²</p>`;
 }
 
-function calculate_circle_area() {
-    let radius = prompt("Enter the circle radius:");
-    if (!radius || isNaN(radius)) {
-        write_answer_circle("Please enter a valid number for the radius.");
-        return;
-    }
-    let area = Math.PI * radius * radius;
-    write_answer_circle(`The area of the circle is ${area.toFixed(2)}.`);
-}
-
-function write_answer_palindrome(text_msg){
-    let my_p = document.getElementById("p_answer_palindrome");
-    my_p.innerHTML = text_msg;
-}
-
-function get_palindrome(){
-    return document.getElementById("possible_palindrome").value;
-}
-
+// ---------------- palindrome ----------------
 function check_palindrome() {
-    let text = get_palindrome();
-    if (!text) {
-        write_answer_palindrome("Please enter text.");
+    const text_input = document.getElementById("possible_palindrome").value;
+    const container = document.getElementById("output_palindrome");
+    if (!text_input) {
+        container.innerHTML = "<p>Please enter text.</p>";
         return;
     }
-    let normalized = text.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
-    let reversed = normalized.split('').reverse().join('');
-    if (normalized === reversed) {
-        write_answer_palindrome(`"${text}" is a palindrome!`);
-    } else {
-        write_answer_palindrome(`"${text}" is NOT a palindrome.`);
-    }
+
+    const cleaned = text_input.replace(/[^a-z0-9]/gi, '').toLowerCase();
+    const reversed = cleaned.split('').reverse().join('');
+    const isPalindrome = cleaned === reversed;
+
+    container.innerHTML = isPalindrome 
+        ? `<p>"${text_input}" is a palindrome!</p>` 
+        : `<p>"${text_input}" is NOT a palindrome.</p>`;
 }
 
-function write_answer_fibo(text_msg){
-    let my_p = document.getElementById("p_answer_fibo");
-    my_p.innerHTML = text_msg;
-}
-
-function calculate_fibonacci() {
-    let n = parseInt(document.getElementById("fibo_length").value);
-    if (isNaN(n) || n < 0) {
-        write_answer_fibo("Please enter a valid non-negative integer.");
+// ---------------- FIibonacci sequence ----------------
+function create_fibo() {
+    const n = parseInt(document.getElementById("fibo_length").value, 10);
+    const container = document.getElementById("output_fibo");
+    if (isNaN(n) || n < 1) {
+        container.innerHTML = "<p>Please enter a positive integer.</p>";
         return;
     }
-    let fib = [0, 1];
-    for (let i = 2; i <= n; i++) {
+
+    const fib = [0, 1];
+    for (let i = 2; i < n; i++) {
         fib[i] = fib[i - 1] + fib[i - 2];
     }
-    write_answer_fibo(`Fibonacci number #${n} is ${fib[n]}.`);
-}
 
-function ItemGroup(name, price, quantity) {
-    this.name = name;
-    this.price = price;
-    this.quantity = quantity;
-}
-
-
-function Cart() {
-    this.items = [];
-
-    this.addItemGroup = function(itemGroup) {
-        this.items.push(itemGroup);
-        alert(`Added ${itemGroup.quantity} x ${itemGroup.name} to cart.`);
-    };
-
-    this.getTotalAmount = function() {
-        let amount = 0;
-        for (let i = 0; i < this.items.length; i++) {
-            amount += this.items[i].price * this.items[i].quantity;
-        }
-        return amount;
-    };
-
-    this.showTotalAmount = function() {
-        let total = this.getTotalAmount();
-        let taxRate = 0.13;
-        let totalWithTax = total * (1 + taxRate);
-        alert(`Item groups: ${this.items.length}\nTotal: $${total.toFixed(2)}\nTotal with tax: $${totalWithTax.toFixed(2)}`);
-    };
-}
-
-let cart = new Cart();
-
-function add_example_items() {
-    let pants = new ItemGroup("Pants", 10.05, 15);
-    let shirt = new ItemGroup("Shirt", 20.50, 3);
-    cart.addItemGroup(pants);
-    cart.addItemGroup(shirt);
-    cart.showTotalAmount();
+    container.innerHTML = `<p>Fibonacci sequence of length ${n}: ${fib.slice(0, n).join(", ")}</p>`;
 }

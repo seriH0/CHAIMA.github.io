@@ -12,7 +12,6 @@
             padding: 15px;
             margin-top: 10px;
             background-color: #f9f9f9;
-            white-space: pre-wrap;
             font-family: monospace;
         }
         .item-row {
@@ -35,7 +34,7 @@
     <div class="body_wrapper">
         <h1>Hello! This is a marketplace</h1>
 
-        <!-- this part is for inputs -->
+        <!-- User input -->
         <div class="item-row">
             <label>Item Name: </label>
             <input type="text" id="item_name" placeholder="e.g., pants">
@@ -50,11 +49,12 @@
         </div>
         <button onclick="add_item_to_cart()">Add Item to Cart</button>
 
-        <!-- button for the coat -->
+        <!-- Predefined coat button -->
         <div class="item-row" style="margin-top:10px;">
             <button onclick="add_coat()">Add 1 Coat ($99.99) to Cart</button>
         </div>
 
+        <!-- Cart display -->
         <div id="cart_output" class="cart-summary"></div>
     </div>
 
@@ -62,72 +62,6 @@
         This website is made for CS203 labs!
     </footer>
 
-    <script>
-        function ItemGroup(name, price, quantity) {
-            this.name = name;
-            this.price = price;
-            this.quantity = quantity;
-        }
-
-        function Cart() {
-            this.itemGroups = [];
-            this.log = [];
-
-            this.log.push("1) Creating the cart\nYou have 0 item, for a total amount of 0$, in your cart!\n");
-
-            this.addItemGroup = function(itemGroup) {
-                this.itemGroups.push(itemGroup);
-
-                const stepNumber = this.log.length + 1;
-                const total = this.getTotalAmount();
-                const totalWithTax = total * 1.15;
-
-                let newStep = `${stepNumber}) Adding ${itemGroup.quantity} ${itemGroup.name} at $${itemGroup.price.toFixed(2)} each!\n`;
-                newStep += `You have ${this.itemGroups.length} item(s) in your cart, for a total amount of ${total.toFixed(2)}$. With taxes, this is ${totalWithTax.toFixed(2)}$.\n`;
-
-                this.log.push(newStep);
-                this.showLog();
-            }
-
-            this.getTotalAmount = function() {
-                let amount = 0;
-                for (let i = 0; i < this.itemGroups.length; i++) {
-                    const item = this.itemGroups[i];
-                    amount += item.price * item.quantity;
-                }
-                return amount;
-            }
-
-            this.showLog = function() {
-                document.getElementById("cart_output").innerText = this.log.join("\n");
-            }
-        }
-
-        const my_cart = new Cart();
-        my_cart.showLog();
-
-        function add_item_to_cart() {
-            const name = document.getElementById("item_name").value.trim();
-            const price = parseFloat(document.getElementById("item_price").value);
-            const quantity = parseInt(document.getElementById("item_quantity").value);
-
-            if (!name || isNaN(price) || isNaN(quantity) || price < 0 || quantity < 1) {
-                alert("Please enter valid item name, price, and quantity.");
-                return;
-            }
-
-            const item = new ItemGroup(name, price, quantity);
-            my_cart.addItemGroup(item);
-
-            document.getElementById("item_name").value = "";
-            document.getElementById("item_price").value = "";
-            document.getElementById("item_quantity").value = "";
-        }
-
-        function add_coat() {
-            const coat = new ItemGroup("coat", 99.99, 1);
-            my_cart.addItemGroup(coat);
-        }
-    </script>
+    <script src="1-marketplace.js"></script>
 </body>
 </html>
