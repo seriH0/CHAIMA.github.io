@@ -6,18 +6,18 @@
     <title>My Personal Webpage</title>
     <link rel="stylesheet" href="my_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="nav.js"></script>
+
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="my_vacation.html">My Dream Vacation</a></li>
-            <li><a href="my_artistic_self.html">My Artistic Self</a></li>
-            <li><a href="marketplace.html">Marketplace</a></li>
-            <li><a href="calculators.html">Calculators</a></li>
-        </ul>
-    </nav>
+    <nav id="main-nav"></nav>
+<script>
+    const current_path = location.pathname;
+    setNav(current_path);
+</script>
+>
+
 
     <div class="body_wrapper">
         <h1>A little about me</h1>

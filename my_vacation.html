@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="nav.js"></script>
+
     <meta charset="UTF-8">
     <meta name="author" content="Chaima">
     <title>My Dream Vacation</title>
@@ -63,15 +65,13 @@
 </head>
 <body>
     <div class="body_wrapper">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="my_vacation.html" class="active">My Dream Vacation</a></li>
-                <li><a href="my_artistic_self.html">My Artistic Self</a></li>
-                <li><a href="marketplace.html">Marketplace</a></li>
-                <li><a href="calculators.html">Calculators</a></li>
-            </ul>
-        </nav>
+        <nav id="main-nav"></nav>
+<script>
+    const current_path = location.pathname;
+    setNav(current_path);
+</script>
+
+
 
         <h1>An Ideal Vacation</h1>
         <p>An ideal vacation would be visiting <strong>Japan</strong> or <strong>South Korea</strong> since their environment is very different from here.</p>
