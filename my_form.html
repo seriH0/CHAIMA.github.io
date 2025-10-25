@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="author" content="Chaima">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Quiz Form</title>
+  <link rel="stylesheet" href="my_style.css">
+  <script src="nav.js"></script>
+</head>
+<body>
+  <nav id="main-nav"></nav>
+  <script>
+    const current_path = location.pathname;
+    setNav(current_path);
+  </script>
+
+  <div class="body_wrapper">
+    <form onsubmit="return validate(event)">
+      <fieldset style="background-color:#e89c5c; border-radius:10px; padding:20px; width:70%; margin:auto;">
+        <legend style="background-color:#b2d8d8; padding:5px 10px; border-radius:6px; font-weight:bold;">
+          Which type are you?
+        </legend>
+
+        <label for="name"><strong>What is your name?</strong></label><br>
+        <input type="text" id="name" name="name" placeholder="Your name"><br><br>
+
+        <label for="email"><strong>What is your email?</strong></label><br>
+        <input type="email" id="email" name="email" placeholder="me@my_address.com"><br><br>
+
+        <p><strong>Question 1:</strong> If you had to choose your favorite activity for a Friday night, what would you choose?</p>
+        <label><input type="radio" name="q1" value="a"> a - Binge watching Netflix until midnight, and ordering in.</label><br>
+        <label><input type="radio" name="q1" value="b"> b - Go out dancing, both hands in the air until 3AM.</label><br>
+        <label><input type="radio" name="q1" value="c"> c - Invite friends for supper and play board games when the kids are asleep.</label><br><br>
+
+        <label><strong>Question 2:</strong> How many kids do you want?</label><br>
+        <input type="number" name="q2" min="0" max="10" value="0"><br><br>
+
+        <p><strong>Question 3:</strong> What weather do you prefer?</p>
+        <label><input type="radio" name="q3" value="Rainy"> Rainy</label><br>
+        <label><input type="radio" name="q3" value="Windy"> Windy</label><br>
+        <label><input type="radio" name="q3" value="Sunny"> Sunny</label><br><br>
+
+        <p><strong>Question 4:</strong> Choose your ideal vacation getaway:</p>
+        <select name="q4">
+          <option value="beach">Maldives beach</option>
+          <option value="mountains">Mountains & nature</option>
+          <option value="city">City & downtown</option>
+        </select><br><br>
+
+        <p><strong>Question 5:</strong> Pick your favorite meal time:</p>
+        <label><input type="checkbox" name="q5" value="Breakfast"> Breakfast</label>
+        <label><input type="checkbox" name="q5" value="Lunch"> Lunch</label>
+        <label><input type="checkbox" name="q5" value="Dinner"> Dinner</label><br><br>
+
+        <input type="submit" value="Get my score!" style="background-color:#b2d8d8; border:none; padding:5px 10px; border-radius:6px; font-weight:bold;">
+        
+        <p id="result" style="margin-top:20px; font-weight:bold; color:rgb(254, 255, 254);"></p>
+      </fieldset>
+    </form>
+  </div>
+
+  <footer>
+    This website is made for CS203 labs!
+  </footer>
+
+  <script>
+  function validate(event) {
+    event.preventDefault(); 
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    let valid = true;
+
+    if (name === "") {
+      alert("Please enter your name.");
+      valid = false;
+    }
+
+    if (email === "") {
+      alert("Please enter your email.");
+      valid = false;
+    } else {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        alert("Please enter a valid email address.");
+        valid = false;
+      }
+    }
+
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    if (!q1) {
+      alert("Please answer Question 1.");
+      valid = false;
+    }
+
+    if (valid) {
+      const result = document.getElementById("result");
+      result.textContent = `Thank you${name ? ", " + name : ""}! Your responses have been recorded.`;
+      return true; P
+    } else {
+      return false; 
+    }
+  }
+  </script>
+</body>
+</html>
