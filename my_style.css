@@ -65,6 +65,14 @@ nav ul li a.active {
   color: #ffffff; 
   border: 2px solid #e89c5c;
 }
+.current_page {
+  color: white;               
+  background-color: #e9f1f2;  
+  font-weight: bold;          
+  border-radius: 5px;         
+  padding: 5px 10px;         
+}
+
 
 /* Footer */
 footer {

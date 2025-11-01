@@ -34,7 +34,7 @@
         <label><input type="radio" name="q1" value="c"> c - Invite friends for supper and play board games when the kids are asleep.</label><br><br>
 
         <label><strong>Question 2:</strong> How many kids do you want?</label><br>
-        <input type="number" name="q2" min="0" max="10" value="0"><br><br>
+        <input type="number" name="q2" min="0" max="10" value=""><br><br>
 
         <p><strong>Question 3:</strong> What weather do you prefer?</p>
         <label><input type="radio" name="q3" value="Rainy"> Rainy</label><br>
@@ -43,6 +43,7 @@
 
         <p><strong>Question 4:</strong> Choose your ideal vacation getaway:</p>
         <select name="q4">
+          <option value="">-- Select one --</option>
           <option value="beach">Maldives beach</option>
           <option value="mountains">Mountains & nature</option>
           <option value="city">City & downtown</option>
@@ -66,41 +67,60 @@
 
   <script>
   function validate(event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
-    let valid = true;
 
     if (name === "") {
       alert("Please enter your name.");
-      valid = false;
+      return false;
     }
 
     if (email === "") {
       alert("Please enter your email.");
-      valid = false;
-    } else {
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        alert("Please enter a valid email address.");
-        valid = false;
-      }
+      return false;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return false;
     }
 
     const q1 = document.querySelector('input[name="q1"]:checked');
     if (!q1) {
-      alert("Please answer Question 1.");
-      valid = false;
+      alert("Please answer Question 1");
+      return false;
     }
 
-    if (valid) {
-      const result = document.getElementById("result");
-      result.textContent = `Thank you${name ? ", " + name : ""}! Your responses have been recorded.`;
-      return true; P
-    } else {
-      return false; 
+    const q2 = document.querySelector('input[name="q2"]');
+    if (q2 && q2.value === "") {
+      alert("Please answer Question 2");
+      return false;
     }
+
+    const q3 = document.querySelector('input[name="q3"]:checked');
+    if (!q3) {
+      alert("Please answer Question 3");
+      return false;
+    }
+
+    const q4 = document.querySelector('select[name="q4"]').value;
+    if (!q4) {
+      alert("Please select an option for Question 4");
+      return false;
+    }
+
+    const q5 = document.querySelectorAll('input[name="q5"]:checked');
+    if (q5.length === 0) {
+      alert("Please select at least one meal for Question 5");
+      return false;
+    }
+
+    const result = document.getElementById("result");
+    result.textContent = `Thank you${name ? ", " + name : ""}! Your responses have been recorded.`;
+    return true;
   }
   </script>
 </body>
