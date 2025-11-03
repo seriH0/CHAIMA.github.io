@@ -1,10 +1,8 @@
-// Load saved items from localStorage
 window.addEventListener("DOMContentLoaded", () => {
     const savedItems = JSON.parse(localStorage.getItem("todoItems")) || [];
     savedItems.forEach(item => renderItem(item));
 });
 
-// Handle form submission
 document.getElementById("todo-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const input = document.getElementById("todo-input");
@@ -17,20 +15,19 @@ document.getElementById("todo-form").addEventListener("submit", (e) => {
 
     renderItem(value);
     saveToLocalStorage(value);
-    input.value = ""; // clear input
+    input.value = ""; 
 });
 
-// Render a single item with trash icon
 function renderItem(itemText) {
     const ul = document.getElementById("todo-list");
     const li = document.createElement("li");
 
-    // Text span
+    // Text
     const textSpan = document.createElement("span");
     textSpan.textContent = itemText;
     li.appendChild(textSpan);
 
-    // Trash icon span
+    // Bin 
     const trashSpan = document.createElement("span");
     trashSpan.classList.add("fas", "fa-trash");
     trashSpan.style.marginLeft = "10px";
@@ -38,7 +35,7 @@ function renderItem(itemText) {
     trashSpan.style.color = "red";
     li.appendChild(trashSpan);
 
-    // Delete on click
+    
     trashSpan.addEventListener("click", () => {
         li.remove();
         removeFromLocalStorage(itemText);
@@ -54,7 +51,7 @@ function saveToLocalStorage(itemText) {
     localStorage.setItem("todoItems", JSON.stringify(items));
 }
 
-// Remove item from localStorage
+// Remove an item from the localStorage
 function removeFromLocalStorage(itemText) {
     let items = JSON.parse(localStorage.getItem("todoItems")) || [];
     items = items.filter(item => item !== itemText);

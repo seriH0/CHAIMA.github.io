@@ -4,11 +4,10 @@ let current_slide = 0;
 // Show the first slide immediately
 showSlide(current_slide);
 
-// Function to display a specific slide
+// a function to display a specific slide
 function showSlide(n) {
     const slides = document.getElementsByClassName("slideshow_img");
-
-    // Wrap around if index goes out of bounds
+    
     if (n >= slides.length) current_slide = 0;
     if (n < 0) current_slide = slides.length - 1;
 
@@ -17,7 +16,7 @@ function showSlide(n) {
         slides[i].style.display = "none";
     }
 
-    // Show the current slide
+    // Shows the current slide
     slides[current_slide].style.display = "block";
 }
 
