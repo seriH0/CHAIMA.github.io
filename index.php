@@ -69,9 +69,7 @@
         <p>Explore my artistic side: <a href="my_artistic_self.html">My Artistic Self</a></p>
     </div>
 
-    <footer>
-        This website is made for CS203 labs!
-    </footer>
+   <?php include 'footer.php'; ?>
 
     <script src="slideshow.js"></script>
 </body>

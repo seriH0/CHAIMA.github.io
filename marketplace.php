@@ -57,9 +57,8 @@
         <div id="cart_output" class="cart-summary"></div>
     </div>
 
-    <footer>
-        This website is made for CS203 labs!
-    </footer>
+    <?php include 'footer.php'; ?>
+
 
     <script src="1-marketplace.js"></script>
 </body>

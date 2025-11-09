@@ -6,15 +6,12 @@
     <title>My To-Do List</title>
     <link rel="stylesheet" href="my_style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="nav.js"></script>
+    <script src="nav.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <nav id="main-nav"></nav>
-    <script>
-        const current_path = location.pathname;
-        setNav(current_path);
-    </script>
+    <script>const current_path = location.pathname; setNav(current_path);</script>
 
     <div class="body_wrapper">
         <h1>My To-Do List</h1>
@@ -27,9 +24,7 @@
         <ul id="todo-list"></ul>
     </div>
 
-    <footer>
-        This website is made for CS203 labs!
-    </footer>
+   <?php include 'footer.php'; ?>
 
     <script src="todo.js"></script>
 </body>

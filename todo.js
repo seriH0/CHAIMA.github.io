@@ -1,7 +1,7 @@
-
-let items = JSON.parse(localStorage.getItem("items")) || [];
-renderList();  
-
+window.addEventListener("DOMContentLoaded", () => {
+    const savedItems = JSON.parse(localStorage.getItem("todoItems")) || [];
+    savedItems.forEach(item => renderItem(item));
+});
 
 document.getElementById("todo-form").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -13,36 +13,21 @@ document.getElementById("todo-form").addEventListener("submit", (e) => {
         return;
     }
 
-    const newItem = {
-        text: value,
-        id: Date.now() 
-    };
-
-    items.push(newItem);
-    localStorage.setItem("items", JSON.stringify(items));
-
-    renderItem(newItem.text, newItem.id);
-    input.value = "";
+    renderItem(value);
+    saveToLocalStorage(value);
+    input.value = ""; 
 });
 
-
-function renderList() {
-    items.forEach(item => renderItem(item.text, item.id));
-}
-
-
-function renderItem(itemText, id) {
+function renderItem(itemText) {
     const ul = document.getElementById("todo-list");
     const li = document.createElement("li");
 
-    li.dataset.id = id; // this is so we can keep the id inside the DOM when we delet it
-
-   
+    // Text
     const textSpan = document.createElement("span");
     textSpan.textContent = itemText;
     li.appendChild(textSpan);
 
-    // Trash icon when deleting
+    // Bin 
     const trashSpan = document.createElement("span");
     trashSpan.classList.add("fas", "fa-trash");
     trashSpan.style.marginLeft = "10px";
@@ -50,14 +35,25 @@ function renderItem(itemText, id) {
     trashSpan.style.color = "red";
     li.appendChild(trashSpan);
 
-    // Deleting 
+    
     trashSpan.addEventListener("click", () => {
         li.remove();
-
-        // Removing from storage by each id
-        items = items.filter(x => x.id !== id);
-        localStorage.setItem("items", JSON.stringify(items));
+        removeFromLocalStorage(itemText);
     });
 
     ul.appendChild(li);
+}
+
+// Save a new item to localStorage
+function saveToLocalStorage(itemText) {
+    let items = JSON.parse(localStorage.getItem("todoItems")) || [];
+    items.push(itemText);
+    localStorage.setItem("todoItems", JSON.stringify(items));
+}
+
+// Remove an item from the localStorage
+function removeFromLocalStorage(itemText) {
+    let items = JSON.parse(localStorage.getItem("todoItems")) || [];
+    items = items.filter(item => item !== itemText);
+    localStorage.setItem("todoItems", JSON.stringify(items));
 }

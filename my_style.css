@@ -144,14 +144,14 @@ footer {
 #prev:hover, #next:hover {
   background-color: rgba(0,0,0,0.5);
 }
-/* Responsive design for smaller screens */
+/*for smaller screens */
 @media screen and (max-width: 700px) {
   .slideshow {
-    max-width: 90%;  /* Shrinks slideshow on small screens */
+    max-width: 90%;  /* makes the slideshow smaller on small screens */
   }
 
   #prev, #next {
-    padding: 6px 10px;  /* Smaller buttons */
+    padding: 6px 10px;  /* maller buttons */
     font-size: 14px;
   }
 }
@@ -195,4 +195,8 @@ footer {
 
 #todo-list li span {
     font-size: 16px;
+}
+nav img {
+  height: 50px;
+  vertical-align: middle;
 }
