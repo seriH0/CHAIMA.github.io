@@ -13,7 +13,7 @@
     <script>
         const current_path = location.pathname;
         setNav(current_path);
-    </script>
+    </script> 
 
     <div class="body_wrapper">
         <h1>A little about me</h1>

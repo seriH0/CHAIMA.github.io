@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #c9f0eb; 
+  background-color:#c9f0eb; 
 }
 
 .body_wrapper {
