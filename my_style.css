@@ -5,7 +5,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #c9f0eb; 
+  background-color:#c9f0eb; 
 }
 
 .body_wrapper {
@@ -98,4 +98,105 @@ footer {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #91bfbf;
+}
+.slideshow_img img {
+    width: 100%;      
+    display: block;   
+}
+/* Slideshow styles with curved borders too */
+.slideshow {
+  position: relative;
+  max-width: 600px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 15px; 
+}
+
+.slideshow_img {
+  width: 100%;
+}
+
+.slideshow_img img {
+  width: 100%;
+  display: block;
+  border-radius: 15px; /* I wanted to round the borders of the images */
+}
+
+/* Buttons layout design */
+#prev, #next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0,0,0,0.7);
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.3);
+  padding: 8px 12px;
+  border-radius: 50%;  /* This will make the prev and next buttons circled */
+  user-select: none;
+  z-index: 10;  /* ensures they appear on top of images otherwise they will be under the images */
+}
+
+#prev { left: 10px; }
+#next { right: 10px; }
+
+#prev:hover, #next:hover {
+  background-color: rgba(0,0,0,0.5);
+}
+/*for smaller screens */
+@media screen and (max-width: 700px) {
+  .slideshow {
+    max-width: 90%;  /* makes the slideshow smaller on small screens */
+  }
+
+  #prev, #next {
+    padding: 6px 10px;  /* maller buttons */
+    font-size: 14px;
+  }
+}
+#todo-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+#todo-input {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #a1cfcf;
+}
+
+#todo-form button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background-color: #e89c5c;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#todo-form button:hover {
+    background-color: #f7d1a3;
+}
+
+#todo-list li {
+    margin: 8px 0;
+    padding: 5px 10px;
+    background-color: #e9f1f2;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style-type: none;
+}
+
+#todo-list li span {
+    font-size: 16px;
+}
+nav img {
+  height: 50px;
+  vertical-align: middle;
 }

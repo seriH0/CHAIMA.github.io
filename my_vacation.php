@@ -50,5 +50,6 @@
             <li>Obviously eat anything and everything</li>
         </ul>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
-</html>
+</html> 

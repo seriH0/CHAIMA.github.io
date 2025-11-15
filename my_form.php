@@ -16,7 +16,7 @@
   </script>
 
   <div class="body_wrapper">
-    <form onsubmit="return validate(event)">
+    <form action="quiz_verification.php" method="get" onsubmit="return validate(event)">
       <fieldset style="background-color:#e89c5c; border-radius:10px; padding:20px; width:70%; margin:auto;">
         <legend style="background-color:#b2d8d8; padding:5px 10px; border-radius:6px; font-weight:bold;">
           Which type are you?
@@ -61,14 +61,12 @@
     </form>
   </div>
 
-  <footer>
-    This website is made for CS203 labs!
-  </footer>
+ <?php include 'footer.php'; ?>
+
 
   <script>
   function validate(event) {
-    event.preventDefault();
-
+  
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
 
