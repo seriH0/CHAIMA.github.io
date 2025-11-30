@@ -11,6 +11,9 @@ $attemptsFile = __DIR__ . '/sessions/login_attempts.json';
 // Load previous login attempts
 if (file_exists($attemptsFile)) {
     $attempts = json_decode(file_get_contents($attemptsFile), true);
+    if (!is_array($attempts)) {
+        $attempts = [];
+    }
 } else {
     $attempts = [];
 }
@@ -45,29 +48,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset(
         $remaining = $attempts[$usernameEntered]['locked_until'] - time();
         $errorMessage = "Too many failed attempts. Please wait $remaining seconds.";
     } else {
-        // Verify password
         if (hash('sha256', $passwordEntered) === $hashedPassword) {
-            // Successful login
             $_SESSION['is_logged_in'] = true;
             $showTodo = true;
 
             setcookie('todo-username', $usernameEntered, time() + 30*24*60*60);
             $prefillUsername = $usernameEntered;
 
-            // Reseting for the attempts
             $attempts[$usernameEntered]['attempts'] = 0;
             $attempts[$usernameEntered]['locked_until'] = 0;
         } else {
-            // Wrong password → increment attempts
             $attempts[$usernameEntered]['attempts'] += 1;
 
             if ($attempts[$usernameEntered]['attempts'] >= 3) {
                 // Lock the user
-                $attempts[$usernameEntered]['locked_until'] = time() + 30; // 30 seconds lock
+                $attempts[$usernameEntered]['locked_until'] = time() + 30;
                 $attempts[$usernameEntered]['attempts'] = 0;
                 $errorMessage = "Too many failed attempts. You are locked out for 30 seconds.";
             } else {
-                $errorMessage = "Incorrect username or password. Attempt " . $attempts[$usernameEntered]['attempts'] . " of 3.";
+                $errorMessage = "Incorrect username or password. Please try again " . $attempts[$usernameEntered]['attempts'] . " of 3.";
             }
         }
     }

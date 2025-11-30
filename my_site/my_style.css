@@ -5,32 +5,32 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color:#c9f0eb; 
+  background-color: #c9f0eb;
 }
 
 .body_wrapper {
-  flex: 1; 
+  flex: 1;
   padding: 20px;
 }
 
-/* few links */
+/* Links */
 a:link {
-  color: #e89c5c; 
+  color: #e89c5c;
   text-decoration: none;
 }
 
 a:visited {
-  color: #e46e13; 
+  color: #e46e13;
 }
 
 a:hover {
-  color: #f7d1a3; 
+  color: #f7d1a3;
   text-decoration: underline;
 }
 
-/* navigation */
+/* Navigation */
 nav {
-  background-color: #e89c5c; 
+  background-color: #e89c5c;
   padding: 10px 0;
   text-align: center;
 }
@@ -48,7 +48,7 @@ nav ul li {
 
 nav ul li a {
   font-weight: bold;
-  color: #ffffff; 
+  color: #ffffff;
   background-color: #b2d8d8;
   padding: 8px 15px;
   border-radius: 5px;
@@ -56,33 +56,39 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  background-color: #a1cfcf; 
-  color: #ffffff;   
+  background-color: #a1cfcf;
+  color: #ffffff;
 }
 
 nav ul li a.active {
-  background-color: #f7d1a3; 
-  color: #ffffff; 
+  background-color: #f7d1a3;
+  color: #ffffff;
   border: 2px solid #e89c5c;
 }
+
 .current_page {
-  color: white;               
-  background-color: #e9f1f2;  
-  font-weight: bold;          
-  border-radius: 5px;         
-  padding: 5px 10px;         
+  color: white;
+  background-color: #e9f1f2;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
+nav img {
+  height: 50px;
+  vertical-align: middle;
+}
 
 /* Footer */
 footer {
-  background-color: #b2d8d8; 
-  color: #ffffff; 
+  background-color: #b2d8d8;
+  color: #ffffff;
   text-align: center;
   padding: 15px;
   height: 50px;
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
 }
@@ -99,17 +105,14 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
   background: #91bfbf;
 }
-.slideshow_img img {
-    width: 100%;      
-    display: block;   
-}
-/* Slideshow styles with curved borders too */
+
+/* Slideshow */
 .slideshow {
   position: relative;
   max-width: 600px;
   margin: 20px auto;
   overflow: hidden;
-  border-radius: 15px; 
+  border-radius: 15px;
 }
 
 .slideshow_img {
@@ -119,10 +122,10 @@ footer {
 .slideshow_img img {
   width: 100%;
   display: block;
-  border-radius: 15px; /* I wanted to round the borders of the images */
+  border-radius: 15px;
 }
 
-/* Buttons layout design */
+/* slideshow buttons */
 #prev, #next {
   position: absolute;
   top: 50%;
@@ -133,9 +136,9 @@ footer {
   cursor: pointer;
   background-color: rgba(0,0,0,0.3);
   padding: 8px 12px;
-  border-radius: 50%;  /* This will make the prev and next buttons circled */
+  border-radius: 50%;
   user-select: none;
-  z-index: 10;  /* ensures they appear on top of images otherwise they will be under the images */
+  z-index: 10;
 }
 
 #prev { left: 10px; }
@@ -144,59 +147,90 @@ footer {
 #prev:hover, #next:hover {
   background-color: rgba(0,0,0,0.5);
 }
-/*for smaller screens */
+
+/* slideshow */
 @media screen and (max-width: 700px) {
   .slideshow {
-    max-width: 90%;  /* makes the slideshow smaller on small screens */
+    max-width: 90%;
   }
 
   #prev, #next {
-    padding: 6px 10px;  /* maller buttons */
+    padding: 6px 10px;
     font-size: 14px;
   }
 }
+
+/* To-Do List */
 #todo-form {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 #todo-input {
-    flex: 1;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #a1cfcf;
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #a1cfcf;
 }
 
 #todo-form button {
-    padding: 8px 12px;
-    border-radius: 5px;
-    border: none;
-    background-color: #e89c5c;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #e89c5c;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 #todo-form button:hover {
-    background-color: #f7d1a3;
+  background-color: #f7d1a3;
 }
 
 #todo-list li {
-    margin: 8px 0;
-    padding: 5px 10px;
-    background-color: #e9f1f2;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style-type: none;
+  margin: 8px 0;
+  padding: 5px 10px;
+  background-color: #e9f1f2;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
 }
 
 #todo-list li span {
-    font-size: 16px;
+  font-size: 16px;
 }
-nav img {
-  height: 50px;
-  vertical-align: middle;
+
+/* --- Lab 10 for blog styling --- */
+
+/* for smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* layout */
+.layout {
+  display: flex;
+  gap: 20px;
+}
+
+main {
+  flex: 3;
+}
+
+aside {
+  flex: 1;
+  background-color: #e9f1f2;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.hero {
+  text-align: center;
+  padding: 30px;
+  background-color: #b2d8d8;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
