@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-
+     // this one is for autosaveing
     // Grab the form elements we care about.
     // (They only exist on blog_add.php, so the checks below avoid errors.)
     const titleInput = document.querySelector("#title");

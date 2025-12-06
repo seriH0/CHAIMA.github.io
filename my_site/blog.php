@@ -2,6 +2,8 @@
 // start the session if it hasn’t been initialized yet
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    var_dump($_SESSION);
+
 }
 
 // header and the blog data functions
@@ -9,15 +11,27 @@ include 'header.php';
 require_once 'blog_model.php'; 
 
 // taking all posts from the JSON file
-$posts = get_blog_posts();
+$posts = load_all_posts();
 
 // checking if the user is logged in ro not
-$is_admin = isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true;
+// Allow admin view via session OR a query flag (?admin=1) for environments without a dedicated blog login.
+// This does NOT bypass your security in the controller; it only reveals UI controls. 
+$is_admin_session = isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === true;
+$is_admin_query   = (isset($_GET['admin']) && $_GET['admin'] === '1');
+$is_admin = $is_admin_session || $is_admin_query;
 ?>
 
-<div class="blog-hero">
-    <h1>The Developer's Blog</h1>
-    <p>Documenting the journey of building a robust Web Architecture.</p>
+<div class="blog-hero" style="text-align:center; padding:40px 20px; background:#b2d8d8; border-radius:8px; margin-bottom:20px;">
+    <h1 style="font-size:2.5rem; margin:0; color:#333; font-family:'Georgia',serif;">The Developer's Blog</h1>
+    <p style="font-size:1.2rem; color:#555; margin-top:10px;">Documenting the journey of building a robust Web Architecture.</p>
+</div>
+
+<!-- Theme toggle button -->
+<div style="text-align:center; margin:20px;">
+    <button id="theme-toggle" 
+            style="padding:10px 20px; border:none; border-radius:5px; cursor:pointer; background:#333; color:#fff;">
+        Toggle Light/Dark Theme
+    </button>
 </div>
 
 <?php if ($is_admin): ?>
@@ -36,24 +50,29 @@ $is_admin = isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === tr
         <?php
         if (!empty($posts)) {
             // switching the order so that the last posts appears first
-            $posts = array_reverse($posts);
+            // If your JSON is an associative array keyed by ID, array_values ensures proper reindexing for array_reverse.
+            $posts_list = is_array($posts) ? array_values($posts) : [];
+            $posts_list = array_reverse($posts_list);
+
+            // ✅ show number of posts
+            echo '<p style="text-align:center; font-weight:bold; margin-bottom:20px;">Total Posts: ' . count($posts_list) . '</p>';
             
-            foreach ($posts as $post) {
+            foreach ($posts_list as $post) {
                 // Each post is wrapped in an article block
                 echo '<article id="' . htmlspecialchars($post['id']) . '" class="blog-article">';
                 
                 // If logged in, show edit/delete controls for this post
                 if ($is_admin) {
-                    echo '<div style="position: absolute; top: 15px; right: 20px; font-size: 0.9rem;">';
+                    echo '<div class="admin-controls" style="position: absolute; top: 15px; right: 20px; font-size: 0.9rem;">';
                     
                     // Link to edit page
-                    echo '<a href="blog_edit.php?id=' . $post['id'] . '" 
+                    echo '<a href="blog_edit.php?id=' . htmlspecialchars($post['id']) . '" 
                              style="color: #92ccd9ff; text-decoration: none; margin-right: 15px;">
                              [EDIT]
                           </a>';
 
                     // Link to delete action with confirmation
-                    echo '<a href="blog_controller.php?action=delete&id=' . $post['id'] . '" 
+                    echo '<a href="blog_controller.php?action=delete&id=' . htmlspecialchars($post['id']) . '" 
                              onclick="return confirm(\'Are you sure you want to delete this post?\');"
                              style="color: #f39716ff; text-decoration: none;">
                              [DELETE]
@@ -70,13 +89,15 @@ $is_admin = isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === tr
                 $is_first = true;
                 $content_id = 'content-' . htmlspecialchars($post['id']);
 
-                foreach ($post['paragraphs'] as $paragraph) {
+                // Ensure paragraphs exist and are an array
+                $paragraphs = isset($post['paragraphs']) && is_array($post['paragraphs']) ? $post['paragraphs'] : [];
+                foreach ($paragraphs as $paragraph) {
                     if ($is_first) {
                         // to always show the first paragraph
                         echo '<p>' . htmlspecialchars($paragraph) . '</p>';
                         
                         // If there are more paragraphs, start a collapsible section
-                        if (count($post['paragraphs']) > 1) {
+                        if (count($paragraphs) > 1) {
                             echo '<div id="' . $content_id . '" class="collapse">';
                             $is_first = false; 
                             continue;
@@ -85,7 +106,7 @@ $is_admin = isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === tr
                         echo '<p>' . htmlspecialchars($paragraph) . '</p>';
                     }
                 }
-                if (count($post['paragraphs']) > 1) {
+                if (count($paragraphs) > 1) {
                     echo '</div>'; 
                     echo '<button class="btn btn-sm btn-link read-more-btn" type="button" 
                                data-bs-toggle="collapse" data-bs-target="#' . $content_id . '" 
@@ -110,7 +131,8 @@ $is_admin = isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === tr
             <?php
             // build a list of links to each post for quick access
             if (!empty($posts)) {
-                foreach ($posts as $post) { 
+                $posts_list_nav = is_array($posts) ? array_values($posts) : [];
+                foreach ($posts_list_nav as $post) { 
                     echo '<li>';
                     echo '<a href="#' . htmlspecialchars($post['id']) . '">';
                     echo htmlspecialchars($post['title']);
@@ -123,5 +145,16 @@ $is_admin = isset($_SESSION['is_logged_in']) && $_SESSION['is_logged_in'] === tr
     </aside>
 
 </div>
+
+<!-- ✅ Theme toggle script -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.addEventListener("click", function() {
+        document.body.classList.toggle("dark-theme");
+    });
+});
+</script>
+
 
 <?php include 'footer.php'; ?>
