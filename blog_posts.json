@@ -1,0 +1,20 @@
+{
+    "post_1": {
+        "id": "post_1",
+        "date": "2025-11-28",
+        "title": "The Evolution of Web Design",
+        "paragraphs": [
+            "Web design has changed massively in the past decade. Sites moved from rigid layouts to flexible, responsive interfaces that adapt to every screen size.",
+            "Modern developers rely on component-based structures, reusable UI blocks, and dynamic rendering to keep websites clean, scalable, and fast."
+        ]
+    },
+    "post_2": {
+        "id": "post_2",
+        "date": "2025-11-29",
+        "title": "How Music Boosts Productivity",
+        "paragraphs": [
+            "Listening to music while working can stimulate creativity and help reduce stress. Many students use ambient or low-fi beats to stay focused for long sessions.",
+            "Choosing the right playlist matters. Music without lyrics is often best for tasks that require concentration, while upbeat tracks can help with repetitive work."
+        ]
+    }
+}
