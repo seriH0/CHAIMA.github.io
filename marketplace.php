@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chaima">
+    <title>Marketplace</title>
+    <link rel="stylesheet" href="my_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="nav.js"></script>
+
+    <style>
+        .cart-summary {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-top: 10px;
+            background-color: #f9f9f9;
+            font-family: monospace;
+        }
+        .item-row {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="main-nav"></nav>
+<script>
+    const current_path = location.pathname;
+    setNav(current_path);
+</script>
+
+
+
+    <div class="body_wrapper">
+        <h1>Hello! This is a marketplace</h1>
+
+        <!-- prompting user input -->
+        <div class="item-row">
+            <label>Item Name: </label>
+            <input type="text" id="item_name" placeholder="e.g., pants">
+        </div>
+        <div class="item-row">
+            <label>Price per Item ($): </label>
+            <input type="number" id="item_price" placeholder="e.g., 10.05" step="0.01">
+        </div>
+        <div class="item-row">
+            <label>Quantity: </label>
+            <input type="number" id="item_quantity" placeholder="e.g., 15">
+        </div>
+        <button onclick="add_item_to_cart()">Add Item to Cart</button>
+
+        <div class="item-row" style="margin-top:10px;">
+            <button onclick="add_coat()">Add 1 Coat ($99.99) to Cart</button>
+        </div>
+
+        <!-- cart -->
+        <div id="cart_output" class="cart-summary"></div>
+    </div>
+
+    <?php include 'footer.php'; ?>
+
+
+    <script src="1-marketplace.js"></script>
+</body>
+</html>

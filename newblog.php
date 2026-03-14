@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Blog</title>
+  <link rel="stylesheet" href="my_style.css">
+</head>
+
+<body>
+
+<!-- Navigation bar -->
+<nav>
+    <ul>
+        <li>
+          <a href="index.php">
+            <img src="images/logo.png" alt="My Logo" style="height:40px; vertical-align:middle;">
+          </a>
+        </li>
+        <li><a href="my_vacation.php">My Dream Vacation</a></li>
+        <li><a href="my_artistic_self.php">My Artistic Self</a></li>
+        <li><a href="marketplace.php">Marketplace</a></li>
+        <li><a href="calculators.php">Calculators</a></li>
+        <li><a href="my_form.php">My Quiz</a></li>
+        <li><a href="login.php">To-Do List</a></li>
+        <li><a href="blog.php" class="active">My Blog</a></li>
+    </ul>
+</nav>
+
+<!-- Blog content -->
+<?php include 'blog_content.php'; ?>
+
+</body>
+</html>

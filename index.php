@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Chaima">
+    <title>My Personal Webpage</title>
+    <link rel="stylesheet" href="my_style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="nav.js"></script>
+</head>
+<body>
+    <nav id="main-nav"></nav>
+    <script>
+        const current_path = location.pathname;
+        setNav(current_path);
+    </script> 
+
+    <div class="body_wrapper">
+        <h1>A little about me</h1>
+        <p>My name is <strong>Chaima</strong>.<br>
+        I've always been into creative tech and can pretty much call myself a bibliophile <em>(I devour any books that fall into my hands!)</em>.</p>
+
+        <hr>
+        <h3>A few things I like</h3>
+        <ul>
+            <li>Spider-Man</li>
+            <li>Cats</li>
+            <li>Blue moons</li>
+        </ul>
+        <hr>
+
+        <!-- Slideshow -->
+        <div class="slideshow">
+            <div class="slideshow_img">
+                <img src="images/img1.jpeg" alt="Image 1">
+            </div>
+            <div class="slideshow_img">
+                <img src="images/img2.jpeg" alt="Image 2">
+            </div>
+            <div class="slideshow_img">
+                <img src="images/img3.jpeg" alt="Image 3">
+            </div>
+            <a id="prev" onclick="previous()">&#10094; Previous</a>
+            <a id="next" onclick="next()">Next &#10095;</a>
+        </div>
+
+        <hr>
+        <h3>My school journey</h3>
+        <table border="1" style="width:60%; border-collapse:collapse; text-align:center;">
+            <tr style="background-color:#f09e4c; font-family:Georgia, serif; font-size:18px;">
+                <th style="padding:10px;">Phase</th>
+                <th style="padding:10px;">Clubs I was in</th>
+            </tr>
+            <tr>
+                <td style="padding:7px; text-align:left;">Primary School</td>
+                <td style="padding:7px;">Chess &amp; Figure Skating</td>
+            </tr>
+            <tr style="font-family:'Courier New', monospace; background-color:#f09e4c;">
+                <td style="padding:7px; text-align:left;">Middle School</td>
+                <td style="padding:7px;">Figure Skating</td>
+            </tr>
+            <tr>
+                <td style="padding:7px; text-align:left; font-weight:bold; color:#010d13;">High School</td>
+                <td style="padding:7px;">IT &amp; Art</td>
+            </tr>
+        </table>
+
+        <p>A "to-die" for vacation: <a href="my_vacation.html">My Dream Vacation</a></p>
+        <p>Explore my artistic side: <a href="my_artistic_self.html">My Artistic Self</a></p>
+    </div>
+
+   <?php include 'footer.php'; ?>
+
+    <script src="slideshow.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="nav.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="author" content="Chaima">
+    <title>My Artistic Self</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url("images/vangogh.jpg"); 
+            background-repeat: no-repeat;
+            background-size: cover;     
+            background-position: center;
+            color: #ffffff;             
+        }
+
+        .overlay {
+            background-color: rgba(156, 167, 213, 0.5);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a.active {
+            text-decoration: underline;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            font-size: 2.2rem;
+            margin: 0;
+        }
+        header a {
+            color: #ffeb3b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .keyword {
+            font-family: "Georgia", serif;
+            margin: 12px;
+        }
+
+        #kw1 { font-size: 2rem; color: #ac27c9; transform: rotate(-5deg); }
+        #kw2 { font-size: 1.6rem; color: #1fbcc7; font-style: italic; }
+        #kw3 { font-size: 1.8rem; color: #f3de21; font-weight: bold; }
+        #kw4 { font-size: 1.5rem; color: #c47894; text-decoration: underline; }
+        #kw5 { font-size: 1.9rem; color: #0f6331; letter-spacing: 2px; }
+
+        .keywords-box {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .description {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: rgba(193, 142, 225, 0.1);
+            border-radius: 7px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        <nav id="main-nav"></nav>
+<script>
+    const current_path = location.pathname;
+    setNav(current_path);
+</script>
+
+
+
+        <header>
+            <h1>My Artistic Self</h1>
+            <a href="index.html">← Back to Home</a>
+        </header>
+
+        <main>
+            <div class="keywords-box">
+                <p class="keyword" id="kw1">Creative</p>
+                <p class="keyword" id="kw2">Artistic</p>
+                <p class="keyword" id="kw3">Adventurous</p>
+                <p class="keyword" id="kw4">Thoughtful</p>
+                <p class="keyword" id="kw5">Curious</p>
+            </div>
+
+            <section class="description">
+                <p>
+                    I chose Van Gogh's "Starry Night" as my background because its bold colors and brushstrokes 
+                    reflect a creative and emotional connection to the painting.  
+                    My five keywords describe how I see myself: creative and artistic in different aspects, 
+                    adventurous in exploring new ideas, thoughtful in looking for details, 
+                    and curious to learn new things.
+                </p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
